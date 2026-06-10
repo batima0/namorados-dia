@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amor em Foco — Dia dos Namorados</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .countdown-bar {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 0.6rem var(--margin);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .countdown-bar strong { font-weight: 700; }
+
+    .hero-home {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 5rem 0 4rem;
+    }
+
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-blob {
+      width: 320px;
+      height: 320px;
+      background: var(--red-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .nav-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      padding: 3rem 0;
+    }
+
+    .nav-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .nav-card:hover {
+      box-shadow: 0 8px 32px rgba(232,48,74,0.1);
+      transform: translateY(-3px);
+      border-color: var(--rose);
+    }
+
+    .nav-card-icon { font-size: 2rem; }
+
+    .nav-card-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--ink);
+    }
+
+    .nav-card-desc {
+      font-size: 0.875rem;
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+
+    .nav-card-arrow {
+      font-size: 1.1rem;
+      color: var(--red);
+      margin-top: auto;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .stat {
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--red);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-top: 0.35rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-home { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .nav-cards { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="countdown-bar">
+  🗓️ Dia dos Namorados: <strong>12 de junho de 2025</strong>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Amor em Foco ♥</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="curiosidades.html">Curiosidades</a></li>
+      <li><a href="presentes.html">Presentes</a></li>
+      <li><a href="ideias.html">Ideias</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-wrap">
+
+    <div class="hero-home">
+      <div>
+        <span class="hero-eyebrow">12 de junho</span>
+        <h1>O amor merece ser <em>celebrado</em> com estilo</h1>
+        <p class="hero-sub">Curiosidades, presentes e ideias românticas para tornar o Dia dos Namorados inesquecível.</p>
+        <a href="curiosidades.html" class="btn btn-primary">Explorar o site →</a>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-blob">♥</div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-number">+50</span>
+        <div class="stat-label">Ideias de presentes</div>
+      </div>
+      <div class="stat">
+        <span class="stat-number">20+</span>
+        <div class="stat-label">Curiosidades sobre o amor</div>
+      </div>
+      <div class="stat">
+        <span class="stat-number">3</span>
+        <div class="stat-label">Categorias de roteiros românticos</div>
+      </div>
+    </div>
+
+    <span class="section-label">O que você vai encontrar</span>
+    <h2 class="section-title">Tudo para o Dia dos Namorados</h2>
+    <p class="section-sub">Navegue pelas seções e descubra tudo que preparamos para você.</p>
+
+    <div class="nav-cards">
+      <a href="curiosidades.html" class="nav-card">
+        <div class="nav-card-icon">🔍</div>
+        <div class="nav-card-title">Curiosidades</div>
+        <div class="nav-card-desc">A origem da data, tradições ao redor do mundo e fatos que você não sabia sobre o amor.</div>
+        <div class="nav-card-arrow">→</div>
+      </a>
+      <a href="presentes.html" class="nav-card">
+        <div class="nav-card-icon">🎁</div>
+        <div class="nav-card-title">Presentes</div>
+        <div class="nav-card-desc">Sugestões organizadas por faixa de preço e perfil do casal. Do simples ao especial.</div>
+        <div class="nav-card-arrow">→</div>
+      </a>
+      <a href="ideias.html" class="nav-card">
+        <div class="nav-card-icon">✨</div>
+        <div class="nav-card-title">Ideias Românticas</div>
+        <div class="nav-card-desc">Programas, jantar em casa, frases e uma galeria de inspirações para o grande dia.</div>
+        <div class="nav-card-arrow">→</div>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">Amor em Foco ♥</span>
+  <span style="color:#fff; font-weight:500;">Arthur de Souza Porfirio · UCB</span>
+</footer>
+
+</body>
+</html>

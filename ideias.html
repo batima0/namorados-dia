@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideias Românticas — Amor em Foco</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero-simple {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* PROGRAMAS */
+    .programa-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .programa-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .programa-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      background: var(--red-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .programa-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .programa-text {
+      font-size: 0.875rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+    }
+
+    /* FRASES */
+    .frases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .frase-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.5rem;
+    }
+
+    .frase-aspas {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--red-light);
+      line-height: 0.5;
+      display: block;
+      margin-bottom: 0.75rem;
+      -webkit-text-stroke: 1.5px var(--rose);
+    }
+
+    .frase-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      user-select: all;
+    }
+
+    .frase-hint {
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+    }
+
+    /* GALERIA — lightbox via :target puro */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .gal-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 1;
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+
+    .gal-item:hover { transform: scale(1.02); }
+    .gal-item.wide  { grid-column: span 2; aspect-ratio: 2/1; }
+    .gal-item.tall  { grid-row: span 2; aspect-ratio: 1/2; }
+
+    .gal-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+    }
+
+    .gal-inner span {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .gal-item:hover .gal-inner span { opacity: 1; }
+
+    .gal-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(26,26,46,0.75));
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 1rem 0.75rem 0.6rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .gal-item:hover .gal-label { opacity: 1; }
+
+    .bg-pink     { background: #FFE4E8; }
+    .bg-peach    { background: #FFE8D6; }
+    .bg-lavender { background: #EDE4FF; }
+    .bg-mint     { background: #D6F5ED; }
+    .bg-sky      { background: #D6EEFF; }
+    .bg-lemon    { background: #FFFAD6; }
+    .bg-rose     { background: #FFD6DE; }
+    .bg-coral    { background: #FFD6C8; }
+
+    /* LIGHTBOX via :target — sem JS */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,26,46,0.9);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .lightbox-overlay:target {
+      display: flex;
+    }
+
+    .lightbox-content {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 4rem 6rem;
+      font-size: 10rem;
+      text-align: center;
+      min-width: 320px;
+    }
+
+    .lightbox-caption {
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .lightbox-close {
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      padding: 0.5rem 1.25rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: background 0.15s;
+      display: inline-block;
+    }
+
+    .lightbox-close:hover { background: rgba(255,255,255,0.1); }
+
+    /* JANTAR */
+    .jantar-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      counter-reset: step;
+    }
+
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      counter-increment: step;
+    }
+
+    .step-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--red-light);
+      -webkit-text-stroke: 1.5px var(--rose);
+      display: block;
+      margin-bottom: 0.6rem;
+      line-height: 1;
+    }
+
+    .step-title {
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 768px) {
+      .programa-list { grid-template-columns: 1fr; }
+      .gallery-grid  { grid-template-columns: repeat(2, 1fr); }
+      .gal-item.wide { grid-column: span 1; aspect-ratio: 1; }
+      .gal-item.tall { grid-row: span 1; aspect-ratio: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Amor em Foco ♥</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="curiosidades.html">Curiosidades</a></li>
+      <li><a href="presentes.html">Presentes</a></li>
+      <li><a href="ideias.html" class="active">Ideias</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-wrap">
+
+    <div class="hero-simple">
+      <span class="hero-eyebrow">Inspire-se</span>
+      <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); line-height:1.15; max-width:18ch; margin-bottom:1rem;">
+        Ideias para um dia <em style="color:var(--red); font-style:italic;">inesquecível</em>
+      </h1>
+      <p class="hero-sub">Programas, frases e uma galeria de inspirações visuais para o Dia dos Namorados.</p>
+    </div>
+
+    <!-- PROGRAMAS -->
+    <div class="section">
+      <span class="section-label">O que fazer</span>
+      <h2 class="section-title">Programas para o casal</h2>
+      <p class="section-sub">Para todos os perfis — do caseiro ao aventureiro.</p>
+
+      <div class="programa-list">
+        <div class="programa-card">
+          <div class="programa-icon">🍳</div>
+          <div>
+            <div class="programa-title">Cozinhar juntos em casa</div>
+            <div class="programa-text">Escolha uma receita nova, coloque uma playlist romântica e cozinhem juntos. O processo é tão especial quanto a refeição.</div>
+          </div>
+        </div>
+        <div class="programa-card">
+          <div class="programa-icon">🌄</div>
+          <div>
+            <div class="programa-title">Piquenique ao pôr do sol</div>
+            <div class="programa-text">Um parque, uma manta, frutas, queijos e vinho. Simples e romântico — o pôr do sol faz o trabalho pesado.</div>
+          </div>
+        </div>
+        <div class="programa-card">
+          <div class="programa-icon">🎬</div>
+          <div>
+            <div class="programa-title">Maratona de filmes</div>
+            <div class="programa-text">Montem uma lista com os filmes favoritos dos dois, caprichem nos petiscos e criem uma sessão especial em casa.</div>
+          </div>
+        </div>
+        <div class="programa-card">
+          <div class="programa-icon">🏞️</div>
+          <div>
+            <div class="programa-title">Passeio em lugar novo</div>
+            <div class="programa-text">Escolham um bairro, trilha ou cidade que nunca visitaram juntos. Explorar lugares novos cria memórias novas.</div>
+          </div>
+        </div>
+        <div class="programa-card">
+          <div class="programa-icon">🎲</div>
+          <div>
+            <div class="programa-title">Noite de jogos em casa</div>
+            <div class="programa-text">Jogos de cartas para casais, tabuleiro ou videogame — competição saudável é ótima pedida.</div>
+          </div>
+        </div>
+        <div class="programa-card">
+          <div class="programa-icon">💌</div>
+          <div>
+            <div class="programa-title">Troca de cartas escritas à mão</div>
+            <div class="programa-text">Cada um escreve uma carta sem o outro ver — trocam ao jantar. Simples e profundamente emocionante.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JANTAR EM CASA -->
+    <div class="section">
+      <span class="section-label">Jantar em casa</span>
+      <h2 class="section-title">Como montar a noite perfeita</h2>
+      <p class="section-sub">Cinco passos para transformar sua casa num restaurante especial.</p>
+
+      <div class="jantar-steps">
+        <div class="step-card">
+          <div class="step-title">Escolha o cardápio</div>
+          <div class="step-text">Opte por pratos que você já fez antes para não ter surpresas. Entrada leve, prato principal caprichado e sobremesa simples.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-title">Cuide da iluminação</div>
+          <div class="step-text">Velas e luz amarela fazem toda a diferença. Desligue luzes brancas e aposte num ambiente mais aconchegante.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-title">Monte a mesa com cuidado</div>
+          <div class="step-text">Uma toalha bonita, taças, pratos bem posicionados e um arranjo simples de flores já elevam muito o visual.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-title">Crie a trilha sonora</div>
+          <div class="step-text">Prepare uma playlist com músicas que têm significado para o casal. Evite músicas com letra muito intensa durante o jantar.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-title">Finalize com surpresa</div>
+          <div class="step-text">Uma mensagem escrita no guardanapo, uma caixinha de chocolates na mesa ou o presente guardado para depois do jantar.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRASES -->
+    <div class="section">
+      <span class="section-label">Para enviar</span>
+      <h2 class="section-title">Frases prontas para usar</h2>
+      <p class="section-sub">Clique sobre o texto da frase para selecioná-la e copie com Ctrl+C.</p>
+
+      <div class="frases-grid">
+        <div class="frase-card">
+          <span class="frase-aspas">"</span>
+          <div class="frase-text">Você não é apenas a pessoa que eu escolhi — é a pessoa com quem eu quero continuar escolhendo todo dia.</div>
+          <div class="frase-hint">Clique no texto para selecionar</div>
+        </div>
+        <div class="frase-card">
+          <span class="frase-aspas">"</span>
+          <div class="frase-text">Nem todo amor tem data marcada. O nosso tem, e hoje é o dia em que eu aproveito para te dizer: valeu muito.</div>
+          <div class="frase-hint">Clique no texto para selecionar</div>
+        </div>
+        <div class="frase-card">
+          <span class="frase-aspas">"</span>
+          <div class="frase-text">Obrigado(a) por ser o meu lugar favorito no mundo — independente de qualquer endereço.</div>
+          <div class="frase-hint">Clique no texto para selecionar</div>
+        </div>
+        <div class="frase-card">
+          <span class="frase-aspas">"</span>
+          <div class="frase-text">Há dias em que a vida é simples quando você está do lado. Hoje é um desses dias, e eu quero que você saiba.</div>
+          <div class="frase-hint">Clique no texto para selecionar</div>
+        </div>
+        <div class="frase-card">
+          <span class="frase-aspas">"</span>
+          <div class="frase-text">Ser seu(sua) companheiro(a) de vida é a melhor decisão que eu já tomei. Feliz Dia dos Namorados.</div>
+          <div class="frase-hint">Clique no texto para selecionar</div>
+        </div>
+        <div class="frase-card">
+          <span class="frase-aspas">"</span>
+          <div class="frase-text">Eu te amo do jeito que você é, não do jeito que o mundo acha que você deveria ser.</div>
+          <div class="frase-hint">Clique no texto para selecionar</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALERIA -->
+    <div class="section">
+      <span class="section-label">Galeria de inspirações</span>
+      <h2 class="section-title">Visualize o clima</h2>
+      <p class="section-sub">Clique em qualquer imagem para ampliar.</p>
+
+      <div class="gallery-grid">
+        <a href="#lb1" class="gal-item wide">
+          <div class="gal-inner bg-rose"><span>🕯️</span><div class="gal-label">Mesa posta com velas e flores</div></div>
+        </a>
+        <a href="#lb2" class="gal-item">
+          <div class="gal-inner bg-peach"><span>🍷</span><div class="gal-label">Taças de vinho ao jantar</div></div>
+        </a>
+        <a href="#lb3" class="gal-item">
+          <div class="gal-inner bg-pink"><span>🌹</span><div class="gal-label">Buquê de rosas vermelhas</div></div>
+        </a>
+        <a href="#lb4" class="gal-item tall">
+          <div class="gal-inner bg-lemon"><span>🌅</span><div class="gal-label">Pôr do sol a dois</div></div>
+        </a>
+        <a href="#lb5" class="gal-item">
+          <div class="gal-inner bg-lavender"><span>🫶</span><div class="gal-label">Decoração romântica em casa</div></div>
+        </a>
+        <a href="#lb6" class="gal-item">
+          <div class="gal-inner bg-mint"><span>🍓</span><div class="gal-label">Morangos com chocolate</div></div>
+        </a>
+        <a href="#lb7" class="gal-item">
+          <div class="gal-inner bg-sky"><span>🎁</span><div class="gal-label">Presentes embrulhados com carinho</div></div>
+        </a>
+        <a href="#lb8" class="gal-item">
+          <div class="gal-inner bg-coral"><span>🧺</span><div class="gal-label">Piquenique romântico</div></div>
+        </a>
+        <a href="#lb9" class="gal-item wide">
+          <div class="gal-inner bg-lemon"><span>✨</span><div class="gal-label">Ambientação com luzes de fada</div></div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- LIGHTBOXES via :target — sem nenhuma linha de JavaScript -->
+<div class="lightbox-overlay" id="lb1">
+  <div class="lightbox-content">🕯️</div>
+  <div class="lightbox-caption">Mesa posta com velas e flores</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb2">
+  <div class="lightbox-content">🍷</div>
+  <div class="lightbox-caption">Taças de vinho ao jantar</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb3">
+  <div class="lightbox-content">🌹</div>
+  <div class="lightbox-caption">Buquê de rosas vermelhas</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb4">
+  <div class="lightbox-content">🌅</div>
+  <div class="lightbox-caption">Pôr do sol a dois</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb5">
+  <div class="lightbox-content">🫶</div>
+  <div class="lightbox-caption">Decoração romântica em casa</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb6">
+  <div class="lightbox-content">🍓</div>
+  <div class="lightbox-caption">Morangos com chocolate</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb7">
+  <div class="lightbox-content">🎁</div>
+  <div class="lightbox-caption">Presentes embrulhados com carinho</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb8">
+  <div class="lightbox-content">🧺</div>
+  <div class="lightbox-caption">Piquenique romântico</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+<div class="lightbox-overlay" id="lb9">
+  <div class="lightbox-content">✨</div>
+  <div class="lightbox-caption">Ambientação com luzes de fada</div>
+  <a href="#" class="lightbox-close">Fechar</a>
+</div>
+
+<footer>
+  <span class="footer-logo">Amor em Foco ♥</span>
+  <span style="color:#fff; font-weight:500;">Arthur de Souza Porfirio · UCB</span>
+</footer>
+
+</body>
+</html>

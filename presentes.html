@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentes — Amor em Foco</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero-simple {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Filtro via CSS :target — cada seção tem um id */
+    .filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      padding-top: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 99px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: all 0.15s;
+      display: inline-block;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: var(--red-light);
+    }
+
+    /* Seções de categorias — todas visíveis por padrão */
+    .cat-section { margin-bottom: 2.5rem; }
+
+    .cat-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--red-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .present-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .present-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .present-card:hover {
+      box-shadow: 0 8px 28px rgba(232,48,74,0.09);
+      transform: translateY(-2px);
+    }
+
+    .present-emoji {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--red-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .price-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-green  { background: #EDFAF2; color: #1A7A47; }
+    .price-yellow { background: #FFF8E6; color: #8A6400; }
+    .price-red    { background: var(--red-light); color: var(--red); }
+
+    .present-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .present-desc {
+      font-size: 0.875rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+      margin-bottom: 0.75rem;
+    }
+
+    .for-whom {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Amor em Foco ♥</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="curiosidades.html">Curiosidades</a></li>
+      <li><a href="presentes.html" class="active">Presentes</a></li>
+      <li><a href="ideias.html">Ideias</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-wrap">
+
+    <div class="hero-simple">
+      <span class="hero-eyebrow">Guia de presentes</span>
+      <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); line-height:1.15; max-width:18ch; margin-bottom:1rem;">
+        O presente <em style="color:var(--red); font-style:italic;">certo</em> para cada casal
+      </h1>
+      <p class="hero-sub">Do econômico ao especial — navegue por faixa de preço e encontre a ideia perfeita.</p>
+    </div>
+
+    <div class="filter-bar">
+      <a href="#economico" class="filter-btn">💚 Até R$ 80</a>
+      <a href="#medio" class="filter-btn">💛 R$ 80–250</a>
+      <a href="#especial" class="filter-btn">❤️ R$ 250+</a>
+      <a href="#criativo" class="filter-btn">🎨 Criativo</a>
+      <a href="#experiencia" class="filter-btn">✨ Experiência</a>
+    </div>
+
+    <!-- ECONÔMICO -->
+    <div class="cat-section" id="economico">
+      <div class="cat-title">💚 Até R$ 80</div>
+      <div class="present-grid">
+
+        <div class="present-card">
+          <div class="present-emoji">📝</div>
+          <div class="card-body">
+            <span class="price-badge price-green">Até R$ 80</span>
+            <div class="present-name">Carta escrita à mão</div>
+            <div class="present-desc">Uma carta sincera tem mais valor sentimental do que qualquer produto caro. Escreva sobre memórias, qualidades e planos juntos.</div>
+            <div class="for-whom">👤 Para quem valoriza o afeto</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🍫</div>
+          <div class="card-body">
+            <span class="price-badge price-green">Até R$ 80</span>
+            <div class="present-name">Kit de chocolates artesanais</div>
+            <div class="present-desc">Selecione sabores favoritos do(a) parceiro(a) e monte uma caixa especial com chocolates finos ou trufas.</div>
+            <div class="for-whom">👤 Para quem ama doces</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">📸</div>
+          <div class="card-body">
+            <span class="price-badge price-green">Até R$ 80</span>
+            <div class="present-name">Fotos reveladas + moldura</div>
+            <div class="present-desc">Selecione as melhores fotos do casal, revele em boa qualidade e apresente numa moldura bonita ou num mini álbum.</div>
+            <div class="for-whom">👤 Para casais nostálgicos</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🎮</div>
+          <div class="card-body">
+            <span class="price-badge price-green">Até R$ 80</span>
+            <div class="present-name">Noite de jogos em casa</div>
+            <div class="present-desc">Monte um kit com jogos de cartas ou tabuleiro para casais, pipoca, bebida favorita e manta.</div>
+            <div class="for-whom">👤 Para casais caseiros</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MÉDIO -->
+    <div class="cat-section" id="medio">
+      <div class="cat-title">💛 R$ 80 – 250</div>
+      <div class="present-grid">
+
+        <div class="present-card">
+          <div class="present-emoji">💆</div>
+          <div class="card-body">
+            <span class="price-badge price-yellow">R$ 80–250</span>
+            <div class="present-name">Voucher de spa / massagem</div>
+            <div class="present-desc">Um momento de relaxamento para a pessoa amada — ou para o casal junto. Ótimo para quem vive estressado.</div>
+            <div class="for-whom">👤 Para quem precisa descansar</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🌹</div>
+          <div class="card-body">
+            <span class="price-badge price-yellow">R$ 80–250</span>
+            <div class="present-name">Buquê + cesta personalizada</div>
+            <div class="present-desc">Combine flores com itens favoritos: vinho, snacks, vela aromática, chocolate. Muito mais especial do que um buquê sozinho.</div>
+            <div class="for-whom">👤 Para qualquer perfil</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">📚</div>
+          <div class="card-body">
+            <span class="price-badge price-yellow">R$ 80–250</span>
+            <div class="present-name">Kit leitura temático</div>
+            <div class="present-desc">Um livro favorito do(a) parceiro(a), uma xícara bonita e um chá especial. Presente perfeito para quem ama ler.</div>
+            <div class="for-whom">👤 Para quem ama livros</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🎨</div>
+          <div class="card-body">
+            <span class="price-badge price-yellow">R$ 80–250</span>
+            <div class="present-name">Aula ou workshop juntos</div>
+            <div class="present-desc">Culinária, dança, cerâmica, vinho... Uma aula em dupla é divertida, diferente e cria uma memória única para o casal.</div>
+            <div class="for-whom">👤 Para casais curiosos</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ESPECIAL -->
+    <div class="cat-section" id="especial">
+      <div class="cat-title">❤️ R$ 250+</div>
+      <div class="present-grid">
+
+        <div class="present-card">
+          <div class="present-emoji">💍</div>
+          <div class="card-body">
+            <span class="price-badge price-red">R$ 250+</span>
+            <div class="present-name">Joia personalizada</div>
+            <div class="present-desc">Um colar, pulseira ou anel com inicial, data ou coordenadas de um lugar especial para o casal.</div>
+            <div class="for-whom">👤 Para relacionamentos sérios</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🏨</div>
+          <div class="card-body">
+            <span class="price-badge price-red">R$ 250+</span>
+            <div class="present-name">Escapada romântica</div>
+            <div class="present-desc">Uma noite num hotel charmoso ou pousada. Pode ser numa cidade próxima — o que importa é a experiência juntos.</div>
+            <div class="for-whom">👤 Para casais aventureiros</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🌟</div>
+          <div class="card-body">
+            <span class="price-badge price-red">R$ 250+</span>
+            <div class="present-name">Jantar em restaurante especial</div>
+            <div class="present-desc">Reserve com antecedência num restaurante que o(a) parceiro(a) sempre quis conhecer.</div>
+            <div class="for-whom">👤 Para quem ama gastronomia</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🎭</div>
+          <div class="card-body">
+            <span class="price-badge price-red">R$ 250+</span>
+            <div class="present-name">Show, teatro ou concerto</div>
+            <div class="present-desc">Ingressos para ver ao vivo um artista ou peça que o(a) parceiro(a) ama. Experiências criam memórias muito mais duradouras.</div>
+            <div class="for-whom">👤 Para quem ama arte e cultura</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CRIATIVO -->
+    <div class="cat-section" id="criativo">
+      <div class="cat-title">🎨 Criativos</div>
+      <div class="present-grid">
+
+        <div class="present-card">
+          <div class="present-emoji">📝</div>
+          <div class="card-body">
+            <span class="price-badge price-green">Até R$ 80</span>
+            <div class="present-name">Carta escrita à mão</div>
+            <div class="present-desc">Uma carta sincera tem mais valor sentimental do que qualquer produto caro.</div>
+            <div class="for-whom">👤 Para quem valoriza o afeto</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">📸</div>
+          <div class="card-body">
+            <span class="price-badge price-green">Até R$ 80</span>
+            <div class="present-name">Fotos reveladas + moldura</div>
+            <div class="present-desc">Selecione as melhores fotos do casal e apresente numa moldura bonita ou num mini álbum.</div>
+            <div class="for-whom">👤 Para casais nostálgicos</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🎨</div>
+          <div class="card-body">
+            <span class="price-badge price-yellow">R$ 80–250</span>
+            <div class="present-name">Aula ou workshop juntos</div>
+            <div class="present-desc">Cerâmica, culinária, dança — uma experiência diferente e memorável para o casal.</div>
+            <div class="for-whom">👤 Para casais curiosos</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EXPERIÊNCIA -->
+    <div class="cat-section" id="experiencia">
+      <div class="cat-title">✨ Experiências</div>
+      <div class="present-grid">
+
+        <div class="present-card">
+          <div class="present-emoji">💆</div>
+          <div class="card-body">
+            <span class="price-badge price-yellow">R$ 80–250</span>
+            <div class="present-name">Voucher de spa / massagem</div>
+            <div class="present-desc">Um momento de relaxamento para a pessoa amada — ou para o casal junto.</div>
+            <div class="for-whom">👤 Para quem precisa descansar</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🏨</div>
+          <div class="card-body">
+            <span class="price-badge price-red">R$ 250+</span>
+            <div class="present-name">Escapada romântica</div>
+            <div class="present-desc">Uma noite num hotel charmoso. O que importa é a experiência juntos.</div>
+            <div class="for-whom">👤 Para casais aventureiros</div>
+          </div>
+        </div>
+
+        <div class="present-card">
+          <div class="present-emoji">🎭</div>
+          <div class="card-body">
+            <span class="price-badge price-red">R$ 250+</span>
+            <div class="present-name">Show, teatro ou concerto</div>
+            <div class="present-desc">Ingressos para ver ao vivo algo que o(a) parceiro(a) ama.</div>
+            <div class="for-whom">👤 Para quem ama arte e cultura</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">Amor em Foco ♥</span>
+  <span style="color:#fff; font-weight:500;">Arthur de Souza Porfirio · UCB</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curiosidades — Amor em Foco</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero-simple {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .curiosity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .curiosity-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: default;
+    }
+
+    .curiosity-card:hover {
+      box-shadow: 0 6px 24px rgba(232,48,74,0.08);
+      transform: translateY(-2px);
+    }
+
+    .curiosity-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--red-light);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      -webkit-text-stroke: 2px var(--rose);
+    }
+
+    .curiosity-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .curiosity-text {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
+    .highlight-block {
+      background: var(--red);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 2.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin: 3rem 0;
+    }
+
+    .highlight-block h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .highlight-block p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+    }
+
+    .highlight-stat {
+      text-align: center;
+    }
+
+    .highlight-stat .big {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      display: block;
+      line-height: 1;
+    }
+
+    .highlight-stat .label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 0.4rem;
+    }
+
+    .world-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .world-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .world-flag {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .world-info strong {
+      font-size: 0.9rem;
+      color: var(--ink);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .world-info span {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+    }
+
+    @media (max-width: 768px) {
+      .highlight-block { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Amor em Foco ♥</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="curiosidades.html" class="active">Curiosidades</a></li>
+      <li><a href="presentes.html">Presentes</a></li>
+      <li><a href="ideias.html">Ideias</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-wrap">
+
+    <div class="hero-simple">
+      <span class="hero-eyebrow">Você sabia?</span>
+      <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); line-height:1.15; max-width:18ch; margin-bottom:1rem;">
+        O amor tem uma história <em style="color:var(--red); font-style:italic;">fascinante</em>
+      </h1>
+      <p class="hero-sub">Da origem medieval à tradição brasileira do dia 12 de junho — descubra curiosidades que vão surpreender você.</p>
+    </div>
+
+    <div class="section">
+      <span class="section-label">A história</span>
+      <h2 class="section-title">Fatos que você não sabia</h2>
+      <p class="section-sub">Curiosidades sobre o Dia dos Namorados, o amor e as tradições ao redor do mundo.</p>
+
+      <div class="curiosity-grid">
+
+        <div class="curiosity-card">
+          <div class="curiosity-number">01</div>
+          <div class="curiosity-title">Por que 12 de junho no Brasil?</div>
+          <div class="curiosity-text">A data foi criada em 1948 pelo publicitário João Dória (pai do ex-governador). Ele escolheu o dia anterior ao Santo Antônio, padroeiro dos casamentos, para impulsionar vendas no comércio.</div>
+        </div>
+
+        <div class="curiosity-card">
+          <div class="curiosity-number">02</div>
+          <div class="curiosity-title">São Valentim existiu de verdade</div>
+          <div class="curiosity-text">São Valentim foi um padre romano martirizado por volta do ano 270 d.C. pelo imperador Cláudio II, que havia proibido casamentos entre jovens soldados. Valentim os casava em segredo.</div>
+        </div>
+
+        <div class="curiosity-card">
+          <div class="curiosity-number">03</div>
+          <div class="curiosity-title">O coração ♥ não é anatômico</div>
+          <div class="curiosity-text">O símbolo do coração como o conhecemos hoje surgiu na Idade Média. Uma teoria é que representava folhas de silphium, uma planta usada como anticoncepcional pelos gregos — associada ao amor e ao prazer.</div>
+        </div>
+
+        <div class="curiosity-card">
+          <div class="curiosity-number">04</div>
+          <div class="curiosity-title">Rosas vermelhas têm raiz grega</div>
+          <div class="curiosity-text">A rosa vermelha era a flor sagrada de Afrodite, deusa do amor. A associação entre rosas vermelhas e romance atravessou milênios até chegar ao que conhecemos hoje.</div>
+        </div>
+
+        <div class="curiosity-card">
+          <div class="curiosity-number">05</div>
+          <div class="curiosity-title">Chocolate e amor têm ligação química</div>
+          <div class="curiosity-text">O chocolate estimula a liberação de feniletilamina e serotonina, substâncias que provocam sensações parecidas com o estado de apaixonamento. Não é à toa que ele virou o presente mais popular da data.</div>
+        </div>
+
+        <div class="curiosity-card">
+          <div class="curiosity-number">06</div>
+          <div class="curiosity-title">O primeiro cartão de amor tem 600 anos</div>
+          <div class="curiosity-text">O cartão de dia dos namorados mais antigo conhecido foi escrito em 1415 pelo Duque de Orléans para sua esposa, enquanto estava preso na Torre de Londres após a Batalha de Azincourt.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="highlight-block">
+      <div>
+        <h3>O Brasil é o 2º maior mercado do mundo na data</h3>
+        <p>Só ficamos atrás dos Estados Unidos em volume de compras e movimentação financeira no Dia dos Namorados. Em 2024, o comércio brasileiro movimentou bilhões só nessa data.</p>
+      </div>
+      <div class="highlight-stat">
+        <span class="big">R$ 2,5bi</span>
+        <div class="label">movimentados no Brasil em 2024</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Ao redor do mundo</span>
+      <h2 class="section-title">Como outros países celebram</h2>
+      <p class="section-sub">Cada cultura tem sua forma única de comemorar o amor.</p>
+
+      <div class="world-grid">
+        <div class="world-card">
+          <div class="world-flag">🇯🇵</div>
+          <div class="world-info">
+            <strong>Japão</strong>
+            <span>As mulheres presenteiam os homens com chocolate. Um mês depois, no "Dia Branco", os homens retribuem.</span>
+          </div>
+        </div>
+        <div class="world-card">
+          <div class="world-flag">🇩🇰</div>
+          <div class="world-info">
+            <strong>Dinamarca</strong>
+            <span>Homens enviam flores brancas chamadas "snowdrops" para as mulheres que gostam.</span>
+          </div>
+        </div>
+        <div class="world-card">
+          <div class="world-flag">🇿🇦</div>
+          <div class="world-info">
+            <strong>África do Sul</strong>
+            <span>As mulheres escrevem o nome do seu amor num pedaço de papel e prendem na manga da camisa — tradição chamada Lupercalia.</span>
+          </div>
+        </div>
+        <div class="world-card">
+          <div class="world-flag">🇫🇷</div>
+          <div class="world-info">
+            <strong>França</strong>
+            <span>Considerado o país mais romântico do mundo, celebra com jantares elaborados e presentes de luxo.</span>
+          </div>
+        </div>
+        <div class="world-card">
+          <div class="world-flag">🇬🇧</div>
+          <div class="world-info">
+            <strong>Reino Unido</strong>
+            <span>Enviam cartões anônimos para quem gostam — a pessoa deve adivinhar quem enviou. Tradição com séculos de história.</span>
+          </div>
+        </div>
+        <div class="world-card">
+          <div class="world-flag">🇮🇳</div>
+          <div class="world-info">
+            <strong>Índia</strong>
+            <span>A data ganhou força nos anos 2000, com foco em presentes e saídas a restaurantes nas grandes cidades.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">Amor em Foco ♥</span>
+  <span style="color:#fff; font-weight:500;">Arthur de Souza Porfirio · UCB</span>
+</footer>
+
+</body>
+</html>
